@@ -1,0 +1,132 @@
+<html>
+
+<head>
+	<title>微信公众号助手</title>
+	<meta charset="utf-8" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" href="css/custom.css" type="text/css" />
+	<script type="text/javascript" src="js/lib/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="js/lib/settings.js"></script>
+	<script type="text/javascript" src="js/lib/util.js"></script>
+	<script type="text/javascript" src="js/params.js"></script>
+	<style>
+		body {
+			font-family: 微软雅黑;
+		}
+
+		input,
+		select,
+		textarea {
+			font-family: 微软雅黑;
+			padding: 3px;
+			border: 1px solid rgba(0, 0, 0, .2);
+			border-radius: 3px;
+			outline: 0;
+			vertical-align: middle;
+		}
+
+		textarea {
+			font-size: 9px;
+		}
+
+		.btn {
+			color: #fff;
+			background-color: #28a745;
+			background-image: linear-gradient(-180deg, #34d058 0%, #28a745 90%);
+			text-decoration: none;
+		}
+
+		div.container {
+			width: 1024px;
+			margin: 10px auto 0;
+			color: #5a5a5a;
+			position: relative;
+			height: 100%;
+		}
+
+		.title {
+			margin-top: 20px;
+		}
+
+		.title h1 {
+			font-size: 15px;
+			display: inline-block;
+		}
+
+		.col-4 {
+			float: left;
+			width: 33.33%;
+		}
+
+		.request .params-input {
+			width: 100%;
+			height: 300px;
+		}
+
+		.request .params-url {
+			width: 100%;
+		}
+
+		.title-main {
+			border-bottom: 2px solid #7a7776;
+			margin-top: 0px;
+		}
+
+		.title-main .icon {
+			font-size: 15px;
+			padding-right: 5px;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container">
+		<div class="row request">
+			<div class="title" style="text-align:right;">
+				<select class="app-select">
+				</select>
+				<input type="button" class="btn refresh-btn" value="刷新Token" />
+				<a class="btn refresh-btn" href="https://mp.weixin.qq.com/wiki" target="_blank">微信公众号开发文档</a>
+			</div>
+			<div class="title title-main">
+				<svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024"
+				 version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="853">
+					<path d="M 954.182 395.636 h -46.592 v 605.044 h -93.0909 V 395.636 H 768 a 46.5455 46.5455 0 0 1 -46.5455 -46.5455 v -46.5455 a 46.5455 46.5455 0 0 1 46.5455 -46.5455 h 186.182 a 46.5455 46.5455 0 0 1 46.5455 46.5455 v 46.5455 a 46.5455 46.5455 0 0 1 -46.5455 46.5455 Z M 814.499 23.2262 h 93.0909 v 186.182 h -93.0909 v -186.182 Z M 628.364 768 h -46.592 v 232.681 H 488.727 V 768 H 442.182 a 46.5455 46.5455 0 0 1 -46.5455 -46.5455 v -46.5455 a 46.5455 46.5455 0 0 1 46.5455 -46.5455 h 186.182 a 46.5455 46.5455 0 0 1 46.5455 46.5455 v 46.5455 a 46.5455 46.5455 0 0 1 -46.5455 46.5455 Z M 488.727 23.2262 h 93.0444 V 581.818 H 488.727 V 23.2262 Z M 256 535.273 H 209.455 v 465.408 H 116.364 V 535.273 H 69.8182 a 46.5455 46.5455 0 0 1 -46.5455 -46.5455 v -46.5455 a 46.5455 46.5455 0 0 1 46.5455 -46.5455 h 186.182 a 46.5455 46.5455 0 0 1 46.5455 46.5455 v 46.5455 a 46.5455 46.5455 0 0 1 -46.5455 46.5455 Z M 116.364 23.2262 h 93.0909 v 325.818 H 116.364 v -325.818 Z"
+					 fill="#2c2c2c" p-id="854"></path>
+				</svg>
+				<h1>请求参数</h1>
+			</div>
+			<div class="title">
+				<select class="params-select">
+				</select>
+			</div>
+			<div class="title">
+				<input type="text" class="params-url" placeholder="API地址" />
+			</div>
+			<div class="panel">
+				<textarea class="params-input" placeholder="请输入请求参数"></textarea>
+			</div>
+			<div class="title" style="text-align:right;">
+				<input type="button" class="btn request-btn" value="请求" />
+			</div>
+		</div>
+		<div class="row response">
+			<div class="title title-main">
+				<svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024"
+				 version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1559">
+					<path d="M835.076186 143.079696c-14.407128 0-26.079982 11.672854-26.079981 26.079982s11.672854 26.079982 26.079981 26.079982c12.802584 0 23.210631 9.771551 23.210632 21.784142v733.018789c0 12.020778-10.408047 21.801539-23.210632 21.801539H188.906417c-12.785188 0-23.193235-9.779737-23.193235-21.801539V217.022779c0-12.012591 10.408047-21.784142 23.193235-21.784143 14.407128 0 26.079982-11.672854 26.079982-26.079982s-11.672854-26.079982-26.079982-26.079981c-41.547255 0-75.353199 33.168424-75.353198 73.944106v733.018789c0 40.783869 33.80492 73.960479 75.353198 73.960479h646.170793c41.556465 0 75.369571-33.17661 75.369571-73.960479V217.022779c0-40.774659-33.81413-73.943083-75.370595-73.943083z"
+					 fill="#2c2c2c" p-id="1560"></path>
+					<path d="M255.54821 394.45384h512.902556c14.407128 0 26.079982-11.672854 26.079982-26.079981s-11.672854-26.079982-26.079982-26.079982H255.54821c-14.407128 0-26.079982 11.672854-26.079981 26.079982 0.001023 14.407128 11.673877 26.079982 26.079981 26.079981zM255.54821 516.15974h354.963431c14.407128 0 26.079982-11.672854 26.079982-26.079982s-11.672854-26.079982-26.079982-26.079982H255.54821c-14.407128 0-26.079982 11.672854-26.079981 26.079982s11.673877 26.079982 26.079981 26.079982zM255.54821 637.865639h443.356621c14.407128 0 26.079982-11.672854 26.079981-26.079982s-11.672854-26.079982-26.079981-26.079981H255.54821c-14.407128 0-26.079982 11.672854-26.079981 26.079981 0.001023 14.406105 11.673877 26.079982 26.079981 26.079982zM346.488409 256.44872h331.023182c27.973098 0 50.733475-22.938432 50.733475-51.140751v-81.363076c0-28.202319-22.760376-51.140751-50.733475-51.14075h-72.033593c-11.079336-41.853224-49.273217-72.806189-94.564749-72.80619s-83.485413 30.952966-94.564749 72.80619h-69.860091c-27.973098 0-50.733475 22.938432-50.733475 51.14075v81.363076c0 28.202319 22.760376 51.140751 50.733475 51.140751z m1.426489-131.485637h91.381243c14.407128 0 26.079982-11.672854 26.079982-26.079982 0-0.602727-0.033769-1.349741-0.093121-2.096754 0.543376-24.704658 20.799722-44.629453 45.63127-44.629453 24.823362 0 45.079708 19.916609 45.63127 44.612057-0.059352 0.747014-0.093121 1.502213-0.093121 2.11415 0 14.407128 11.672854 26.079982 26.079982 26.079982h93.554746v79.325673H347.914898v-79.325673z"
+					 fill="#2c2c2c" p-id="1561"></path>
+				</svg>
+				<h1>响应结果</h1>
+			</div>
+			<div class="panel response-result">
+				<p></p>
+				<pre></pre>
+			</div>
+		</div>
+		<script type="text/javascript" src="js/index.js"></script>
+</body>
+
+</html>
