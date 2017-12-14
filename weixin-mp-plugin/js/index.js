@@ -2,9 +2,6 @@ window.name = "assist";
 var appid;
 var appsecret;
 
-var appSelectList = [
-];
-
 var paramsSelectList = [
 	{
 		name: "拉取会员信息（积分查询）接口",
@@ -150,19 +147,11 @@ function apiRequest(url, callback) {
 }
 
 function renderparamsSelect() {
-	$(".app-select").append("<option value=''>请选择操作</option>");
-	$.each(appSelectList, function (index, item) {
-		$(".app-select").append("<option value='" + item.appid + "'>" + item.name + "</option>");
+	$(".params-appid").change(function () {
+		appid = $(this).val();
 	});
-	$(".app-select").change(function () {
-		var value = $(".app-select").val();
-		$.each(appSelectList, function (index, item) {
-			if (item.appid == value) {
-				var appid = item.appid;
-				var appsecret = item.appsecret;
-				return false;
-			};
-		});
+	$(".params-appsecret").change(function () {
+		appsecret = $(this).val();
 	});
 
 	$(".params-select").append("<option value=''>请选择操作</option>");
@@ -185,13 +174,18 @@ function renderparamsSelect() {
 renderparamsSelect();
 
 function submitRequest() {
-	var app = $(".app-select").val();
-	if(!app){
-		alert("please select App");
+	var params_appid = $(".params-appid").val();
+	if (!params_appid) {
+		alert("please input appid");
+		return false;
+	}
+	var params_appsecret = $(".params-appsecret").val();
+	if (!params_appsecret) {
+		alert("please input appsecret");
 		return false;
 	}
 	var value = $(".params-select").val();
-	if(!value){
+	if (!value) {
 		alert("please select Api");
 		return false;
 	}
