@@ -122,6 +122,16 @@ function request(params, url, callback, checkToken) {
 
 var tokenkey = "access-token";
 function refreshAccessToken() {
+    var params_appid = $(".params-appid").val();
+    if (!params_appid) {
+        alert("请输入appid");
+        return false;
+    }
+    var params_appsecret = $(".params-appsecret").val();
+    if (!params_appsecret) {
+        alert("请输入appsecret");
+        return false;
+    }
 	var url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=" + appid + "&secret=" + appsecret;
 	request({}, url, function (data) {
 		if (data && data.access_token) {
@@ -176,17 +186,17 @@ renderparamsSelect();
 function submitRequest() {
 	var params_appid = $(".params-appid").val();
 	if (!params_appid) {
-		alert("please input appid");
+		alert("请输入appid");
 		return false;
 	}
 	var params_appsecret = $(".params-appsecret").val();
 	if (!params_appsecret) {
-		alert("please input appsecret");
+		alert("请输入appsecret");
 		return false;
 	}
 	var value = $(".params-select").val();
 	if (!value) {
-		alert("please select Api");
+		alert("请选择Api");
 		return false;
 	}
 	var opreate = null;
