@@ -1,6 +1,6 @@
 package mp.aes;
 
-import com.jiuxian.weixin.mp.WxMpConfig;
+import mp.WxMpConfig;
 import org.apache.commons.codec.binary.Base64;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
