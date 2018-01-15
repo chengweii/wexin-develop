@@ -1,4 +1,4 @@
-window.name = "assist";
+window.name = "mp-assist";
 var appid;
 var appsecret;
 
@@ -100,6 +100,8 @@ var paramsSelectList = [
         params_template: cgi_bin_menu_create_data
     }
 ];
+
+var process_list = [{name:"API创建自定义卡号的会员卡",processes:["创建会员卡","card_membercard_activateuserform_set","card_qrcode_create","用户领取后调用激活接口","card_membercard_activate"]}];
 
 function request(params, url, callback, checkToken) {
     if (checkToken) {
@@ -222,4 +224,8 @@ function submitRequest() {
 
 $(".request-btn").click(function () {
     submitRequest();
+});
+
+$(".process-btn").click(function () {
+    window.open(chrome.extension.getURL('process.html'), "mp-assist-doc");
 });

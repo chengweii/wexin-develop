@@ -1,4 +1,76 @@
-var card_create_data = {
+<html>
+
+<head>
+    <title>微信公众号助手流程文档</title>
+    <meta charset="utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" href="css/custom.css" type="text/css"/>
+    <script type="text/javascript" src="js/lib/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="js/lib/settings.js"></script>
+    <script type="text/javascript" src="js/lib/util.js"></script>
+    <script type="text/javascript" src="js/params.js"></script>
+    <style>
+        body {
+            font-family: 微软雅黑;
+        }
+
+        div.container {
+            width: 1024px;
+            margin: 10px auto 0;
+            color: #5a5a5a;
+            position: relative;
+            height: 100%;
+        }
+
+        .title {
+            margin-top: 20px;
+        }
+
+        .title h1 {
+            font-size: 15px;
+            display: inline-block;
+        }
+
+        .col-4 {
+            float: left;
+            width: 33.33%;
+        }
+
+        pre.highlight{
+            display: none;
+            background-color: #f8f8f8;
+            border: 1px solid #ccc;
+            padding: 6px 10px;
+            border-radius: 3px;
+            overflow: auto;
+            height:300px;
+        }
+
+        span.highlighter-opreate{
+            font-weight: bold;
+            cursor: pointer;
+            font-size:12px;
+        }
+
+        h1{
+            font-size:25px;
+        }
+        h2{
+            font-size:13px;
+        }
+
+    </style>
+</head>
+
+<body>
+<div class="container">
+    <div class="row">
+        <h1>API创建自定义卡号的会员卡</h1>
+        <h2>1.首先调用 创建会员卡接口 创建会员卡</h2>
+        <div class="highlighter-rouge">
+            <span class="highlighter-opreate">+Demo</span>
+            <pre class="highlight">
+{
     "card": {
         "card_type": "MEMBER_CARD",
         "member_card": {
@@ -94,37 +166,14 @@ var card_create_data = {
             "discount": 10
         }
     }
-};
-
-var card_membercard_activate_data = {
-    "init_bonus": 0,
-    "membership_number": "99100100001501133650",
-    "code": "480813978179",
-    "card_id": "pYmlZ0bn9fFKgJdZEZ69arRFqbXY"
-};
-
-var card_delete_data = {"card_id": "pFS7Fjg8kV1IdDz01r4SQwMkuCKc"};
-
-var card_user_getcardlist_data = {
-    "openid": "oKot_t872sjz6hR_n-D2R1OIOwgM",
-    "card_id": "pKot_txWvdHNTulLqwTSqfqveXqs"
-};
-
-var card_qrcode_create_data = {
-    "action_name": "QR_MULTIPLE_CARD",
-    "action_info": {
-        "multiple_card": {
-            "card_list": [
-                {
-                    "card_id": "pKot_tzL0nH_DzZeHqfDMj7tF9RA",
-                    "outer_str": "12b"
-                }
-            ]
-        }
-    }
-};
-
-var card_membercard_activateuserform_set_data = {
+}
+            </pre>
+        </div>
+        <h2>2.接着调用 设置开卡字段接口 配置激活输入信息</h2>
+        <div class="highlighter-rouge">
+            <span class="highlighter-opreate">+Demo</span>
+            <pre class="highlight">
+{
     "card_id": "pbLatjnrwUUdZI641gKdTMJzHGfc",
     "required_form": {
         "can_modify": false,
@@ -140,96 +189,43 @@ var card_membercard_activateuserform_set_data = {
             "USER_FORM_INFO_FLAG_BIRTHDAY"
         ]
     }
-};
-
-// 推送微信卡券消息接口
-var cgi_bin_message_custom_send_data = {
-    "touser": "oKot_t872sjz6hR_n-D2R1OIOwgM",
-    "msgtype": "wxcard",
-    "wxcard": {
-        "card_id": "pKot_t3IrMRbbWgdIlIz3976cSnk"
-    },
-};
-
-// 导入code接口
-var card_code_deposit_data = {
-    "card_id": "pDF3iY0_dVjb_Pua96MMewA96qvA",
-    "code": [
-        "11111",
-        "22222",
-        "33333",
-        "44444",
-        "55555"
-    ]
-};
-
-// 修改卡券库存接口
-var card_modifystock_data = {
-    "card_id": "pFS7Fjg8kV1IdDz01r4SQwMkuCKc",
-    "increase_stock_value": 10
-};
-
-var cgi_bin_material_batchget_material_data = {
-    "type": "image",
-    "offset": 0,
-    "count": 20
-};
-
-var cgi_bin_menu_create_data = {
-    "button": [
-        {
-            "type": "view",
-            "name": "我要买酒",
-            "url": "http://test.m.jiukuaidao.com"
-        },
-        {
-            "name": "会员尊享",
-            "sub_button": [
+}
+            </pre>
+        </div>
+        <h2>3.然后调用 投放卡券创建二维码接口 取得领取会员卡的二维码</h2>
+        <div class="highlighter-rouge">
+            <span class="highlighter-opreate">+Demo</span>
+            <pre class="highlight">
+{
+    "action_name": "QR_MULTIPLE_CARD",
+    "action_info": {
+        "multiple_card": {
+            "card_list": [
                 {
-                    "type": "click",
-                    "name": "会员卡",
-                    "key": "CLICK_001"
+                    "card_id": "pKot_tzL0nH_DzZeHqfDMj7tF9RA",
+                    "outer_str": "12b"
                 }
             ]
-        },
-        {
-            "name": "加盟酒仙",
-            "sub_button": [
-                {
-                    "type": "view",
-                    "name": "加盟详情",
-                    "url": "http://test.m.jiukuaidao.com"
-                },
-                {
-                    "type": "click",
-                    "name": "店铺详情",
-                    "key": "CLICK_002"
-                },
-                {
-                    "type": "click",
-                    "name": "联系我们",
-                    "key": "CLICK_003"
-                }
-            ]
-        }
-    ]
-};
-
-var card_membercard_userinfo_get_data = {
-    "card_id": "pbLatjtZ7v1BG_ZnTjbW85GYc_E8",
-    "code": "916679873278"
-};
-
-var card_update_data = {
-    "card_id": "pYmlZ0bn9fFKgJdZEZ69arRFqbXY",
-    "member_card": {
-        "custom_field1": {
-            "name": "订单",
-            "url": "http://m.jiukuaidao.com/order"
-        },
-        "custom_field2": {
-            "name": "优惠券",
-            "url": "http://m.jiukuaidao.com/coupon/my_coupon"
         }
     }
-};
+}
+            </pre>
+        </div>
+        <h2>4.待用户领取到会员卡后，在微信推送的激活成功通知中，调用 激活会员卡接口 激活会员卡（调整会员卡号、初始积分等）</h2>
+        <div class="highlighter-rouge">
+            <span class="highlighter-opreate">+Demo</span>
+            <pre class="highlight">
+{
+    "init_bonus": 0,
+    "membership_number": "99100100001501133650",
+    "code": "480813978179",
+    "card_id": "pYmlZ0bn9fFKgJdZEZ69arRFqbXY"
+}
+            </pre>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="js/process.js"></script>
+</body>
+
+</html>
