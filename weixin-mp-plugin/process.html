@@ -36,27 +36,28 @@
             width: 33.33%;
         }
 
-        pre.highlight{
+        pre.highlight {
             display: none;
             background-color: #f8f8f8;
             border: 1px solid #ccc;
             padding: 6px 10px;
             border-radius: 3px;
             overflow: auto;
-            height:300px;
+            height: 300px;
         }
 
-        span.highlighter-opreate{
+        span.highlighter-opreate {
             font-weight: bold;
             cursor: pointer;
-            font-size:12px;
+            font-size: 12px;
         }
 
-        h1{
-            font-size:25px;
+        h1 {
+            font-size: 25px;
         }
-        h2{
-            font-size:13px;
+
+        h2 {
+            font-size: 13px;
         }
 
     </style>
@@ -222,6 +223,22 @@
     "card_id": "pYmlZ0bn9fFKgJdZEZ69arRFqbXY"
 }
             </pre>
+            <h1>API修改会员卡</h1>
+            <h2>1.如何删除小菜单(将要删的字段置空更新)</h2>
+            <div class="highlighter-rouge">
+                <span class="highlighter-opreate">+Demo</span>
+                <pre class="highlight">
+{
+    "card_id":"pYmlZ0bn9fFKgJdZEZ69arRFqbXY",
+    "member_card":{
+        "custom_field1":{
+            "url":"",
+            "name":""
+        }
+    }
+}
+                </pre>
+            </div>
         </div>
     </div>
 </div>
