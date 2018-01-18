@@ -82,6 +82,18 @@ var paramsSelectList = [
         params_template: {}
     },
     {
+        name: "获取自定义菜单配置接口",
+        value: "get_current_selfmenu_info",
+        url: "https://api.weixin.qq.com/cgi-bin/get_current_selfmenu_info?access_token=",
+        params_template: {}
+    },
+    {
+        name: "自定义菜单删除接口",
+        value: "menu_delete",
+        url: "https://api.weixin.qq.com/cgi-bin/menu/delete?access_token=",
+        params_template: {}
+    },
+    {
         name: "客服接口-发消息",
         value: "cgi_bin_message_custom_send",
         url: "https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token=",
